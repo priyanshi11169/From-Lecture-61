@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { Routes, Route} from "react-router-dom";
 import ProductListPage from "./ProductListPage"
 import ProductDetails from "./ProductDetails"
@@ -27,7 +27,7 @@ function App() {
   }
 
   const totalCount=Object.keys(cart).reduce(function(output,current) {
-     return  (output + cart[current]);
+     return  output + cart[current];
   },0);
   
   const path=window.location.pathname;

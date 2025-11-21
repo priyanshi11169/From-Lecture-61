@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom'
+import {  useCallback, useState,useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom"
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import  {getProductData}  from "./api.js"
 import  Loading  from "./Loading"
 import './ProductDetails'
-import { useEffect, useState } from 'react';
 import NotFound from './NotFound.jsx';
 
 function ProductDetails ({onAddToCart}) {
@@ -27,13 +27,15 @@ function ProductDetails ({onAddToCart}) {
 
   }, [id])
 
-    function handleCountChange(event) {
+    const handleCountChange= useCallback(function (event) {
     setCount(+event.target.value);
-  }
+  },[]);
 
-  function onButtonClick() {
+    const onButtonClick= useCallback(function () {
     onAddToCart(id,count);
-  }
+  },[count,id,onAddToCart])
+
+
   
   
   
